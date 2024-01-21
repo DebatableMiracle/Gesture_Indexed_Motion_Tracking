@@ -1,0 +1,1 @@
+#Not much in the first draft of this. I'm making a repository for a project based on hand gesture recognition using mediapipe. I'm using data used by another japapnese repository.
