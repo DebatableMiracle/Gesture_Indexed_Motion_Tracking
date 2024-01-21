@@ -27,7 +27,6 @@ def get_args():
     args = parser.parse_args()
 
     return args
-#CvFpsCalc = CvFpsCalc(buffer_len=10)
 def main():
     #  Argument Parsing --------------------------------------------------------------------------------------------
     args = get_args()
@@ -74,8 +73,6 @@ def main():
     #    Co-ordinate history ---------------------------------------------------------------------------------------
     history_length = 16
     point_history = deque(maxlen=history_length)
-    #    Finger Gesture History ------------------------------------------------------------------------------------
-    #finger_gesture_history = deque(maxlen= history_length)
 
     # implementation 
     mode = 0
@@ -86,7 +83,6 @@ def main():
         key = cv.waitKey(10)
         if key == 27:
             break
-        number, mode = select_mode(key, mode)
         # Camera capture
         ret, image = cap.read()
         if not ret:
@@ -116,15 +112,6 @@ def main():
                 hand_sign_id = keypoint_classifier(pre_processed_landmark_list)
 
 
-                #Finger Gesture Classification
-                #finger_gesture_id = 0
-                #point_history_len = len(pre_process_point_history_list)
-                # Calculate the gesture ID in the latest detection
-                #finger_gesture_history.append(finger_gesture_id)
-                #most_common_fg_id = Counter(
-                    #finger_gesture_history).most_common()
-                
-
                 #Drawing on the cam
                 debug_image = draw_bounding_rect(use_brect, debug_image, brect)
                 debug_image = draw_landmarks(debug_image, landmark_list)
@@ -137,19 +124,12 @@ def main():
         else:
             pass
 
-        debug_image = draw_info(debug_image, fps, mode, number)
+        debug_image = draw_info(debug_image, fps)
 
         # Screen Name
         cv.imshow('Hand Gesture Recognition', debug_image)
     cap.release()
     cv.destroyAllWindows()
-
-def select_mode(key, mode):
-    mode = 0
-    number = -1
-    if 48 <= key <=57:
-        number = key - 48
-    return number, mode
 
 def calc_bounding_rect(image, landmarks):
     image_width, image_height = image.shape[1], image.shape[0]
@@ -201,22 +181,6 @@ def pre_process_landmark(landmark_list):
     temp_landmark_list = list(map(normalize_, temp_landmark_list))
     return temp_landmark_list
 
-# def pre_process_point_history_list(image, point_history):
-#     image_width, image_height = image.shape[1], image.shape[0]
-#     temp_point_history = copy.deepcopy(point_history)
-
-#         #convert to relative co-ordinates
-#     base_x, base_y = 0, 0
-#     for index, point in enumerate(temp_point_history):
-#         if index == 0:
-#             base_x, base_y = point[0], point[1]
-#         temp_point_history[index][0] = temp_point_history[0] - base_x
-#         temp_point_history[index][1] = temp_point_history[1] - base_y
-        
-    #     #convert to one dimensional list
-    # temp_point_history = list(
-    #     itertools.chain.from_iterable(temp_point_history))
-    # return temp_point_history
     
 def draw_landmarks(image, landmark_point):
     if len(landmark_point) > 0:
@@ -372,14 +336,10 @@ def draw_info_text(image, brect, handedness, hand_sign_text):
         info_text = info_text + ':' + hand_sign_text
     cv.putText(image, info_text, (brect[0] + 5, brect[1] - 4),
                cv.FONT_HERSHEY_COMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
-
-    # if finger_gesture_text != "":
-    #     cv.putText(image, 'Finger Gesture:' + finger_gesture_text, (10, 60), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
-    #     cv.putText(image, 'Finger Gesture:' + finger_gesture_text, (10, 60), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
-        
+      
     return image
     
-def draw_info(image, fps, mode, number):
+def draw_info(image, fps):
     cv.putText(image, "FPS:" + str(fps), (10,30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
     cv.putText(image, "FPS:" + str(fps), (10,30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
 
