@@ -200,7 +200,7 @@ def draw_bounding_rect(use_brect, image, brect):
         cv.rectangle(image,(brect[0], brect[1]),(brect[2], brect[3]), (255, 0,0), 1)
     return image
     
-def draw_info_text(image, brect, handedness, hand_sign_text):
+def draw_info_text(image, brect, handedness, hand_sign_text, finger_gesture_text):
     cv.rectangle(image, (brect[0], brect[1]), (brect[2], brect[1] - 22),
                  (0, 255, 0), -1)
 
@@ -210,7 +210,11 @@ def draw_info_text(image, brect, handedness, hand_sign_text):
         info_text = info_text + ':' + hand_sign_text
     cv.putText(image, info_text, (brect[0] + 5, brect[1] - 4),
                cv.FONT_HERSHEY_COMPLEX, 0.6, (255, 255, 255), 1, cv.LINE_AA)
-      
+    if finger_gesture_text != "":
+        cv.putText(image, "Pointer Gesture:" + finger_gesture_text, (10, 60),
+               cv.FONT_HERSHEY_COMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
+        cv.putText(image, "Pointer Gesture:" + finger_gesture_text, (10, 60),
+               cv.FONT_HERSHEY_COMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
     return image
     
 def draw_info(image, fps, number, mode):
@@ -225,9 +229,16 @@ def draw_info(image, fps, number, mode):
                    cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1,
                    cv.LINE_AA)
     if mode==2:
-          cv.putText(image, "MODE: Not decided yet", (10, 90),
+          cv.putText(image, "MODE: Gesture Motion Classification", (10, 90),
                    cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1,
                    cv.LINE_AA)
+    if mode > 0:
+          if 0 <= number <= 9:
+                cv.putText(image, "number", (10, 110),
+                   cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1,
+                   cv.LINE_AA)
+                
+          
     return image
 
 def select_mode(key, mode):
@@ -236,14 +247,20 @@ def select_mode(key, mode):
         number = key - 48
     if key == 110:
         mode = 1
+    if key  == 107:
+        mode = 2
     return number, mode
 
-def write_in_csv(number, mode, landmark_list):
+def write_in_csv(number, mode, landmark_list, point_history_list):
     if mode == 1 and (0 <= number <= 9):
         dataset_path = 'datasets\keypoint.csv'
         with open(dataset_path, 'a', newline="") as f:
             writer = csv.writer(f)
             writer.writerow([number, *landmark_list])
     if mode == 2:
+        dataset_path = 'datasets\point_history.csv'
+        with open(dataset_path, 'a', newline="") as f:
+            writer = csv.writer(f)
+            writer.writerow([number, *point_history_list])
         #later for motion sensing of the hand
-        pass
+        return

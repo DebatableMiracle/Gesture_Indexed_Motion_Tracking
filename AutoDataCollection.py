@@ -9,6 +9,7 @@ from collections import deque
 import cv2 as cv
 import numpy as np
 import mediapipe as mp
+from models import PointHistoryClassifier
 
 from utils import CvFpsCalc
 from models import KeyPointClassifier
@@ -58,15 +59,25 @@ def DataCollection():
     )
 
     keypoint_classifier = KeyPointClassifier()
+    point_history_classifier = PointHistoryClassifier()
 #   Read Labels ------------------------------------------------------------------------------------------------
     with open('datasets\keypoint_classifier_label.csv', encoding='utf-8-sig') as f:
         keypoint_classifier_labels = csv.reader(f)
         keypoint_classifier_labels = [
             row[0] for row in keypoint_classifier_labels
-        ]        
+        ]
+    with open('datasets\point_history.csv', encoding='utf-8-sig') as f:
+        point_history_classifier_labels = csv.reader(f)
+        point_history_classifier_labels = [
+            row[0] for row in point_history_classifier_labels
+        ]       
     #    FPS Measurement -------------------------------------------------------------------------------------------
     cvFpsCalc = CvFpsCalc(buffer_len=10)
+    #     Co-ordinate measurement
+    history_length = 16
+    point_history = deque(maxlen = history_length)
 
+    finger_gesture_history = deque(maxlen = history_length)
     #    Implementation 
     mode = 1
     while True:
@@ -74,6 +85,8 @@ def DataCollection():
 
         #process key (esc == 27: end)
         key = cv.waitKey(10)
+        if key != -1:
+            print("pressed Key:", key)
         if key == 27:
             break
         number, mode = select_mode(key, mode)
@@ -102,11 +115,26 @@ def DataCollection():
                 # Conversion to relative co-ordinates / normalized co-ordinates 
                 pre_processed_landmark_list = pre_process_landmark(
                     landmark_list)
+                pre_processed_point_history_list = pre_process_point_history(
+                    debug_image ,point_history)
+                                
                 #writing to the dataset
-                write_in_csv(number, mode, pre_processed_landmark_list)
+                write_in_csv(number, mode, pre_processed_landmark_list, pre_processed_point_history_list)
                 # Hand Sign Classification
                 hand_sign_id = keypoint_classifier(pre_processed_landmark_list)
+                if hand_sign_id == 2:
+                    point_history.append(landmark_list[8])
+                else:
+                    point_history.append([0,0])
+                #Finger gesture classification
+                finger_gesture_id = 0
+                point_history_len = len(pre_processed_point_history_list)
+                if point_history_len == (history_length*2):
+                    finger_gesture_id = point_history_classifier(pre_processed_point_history_list)
 
+                #calculate the gestures in the latest detection
+                finger_gesture_history.append(finger_gesture_id)
+                most_common_finger_gesture_id = Counter(finger_gesture_history).most_common()
                 #Drawing on the cam
                 debug_image = draw_bounding_rect(use_brect, debug_image, brect)
                 debug_image = draw_landmarks(debug_image, landmark_list)
@@ -115,15 +143,34 @@ def DataCollection():
                     brect,
                     handedness,
                     keypoint_classifier_labels[hand_sign_id],
+                    point_history_classifier_labels[most_common_finger_gesture_id[0][0]]
                 )
         else:
-            pass
+            point_history.append([0,0])
 
         debug_image = draw_info(debug_image, fps, number, mode)
+        #debug_image = draw_point_history(debug_image, point_history)
 
         # Screen Name
         cv.imshow('Data Collection Assistance Application', debug_image)
     cap.release()
     cv.destroyAllWindows()
+def pre_process_point_history(image, point_history):
+    image_width, image_height = image.shape[1], image.shape[0]
+
+    temp_point_history = copy.deepcopy(point_history)
+
+    base_x, base_y = 0,0
+    for index, point in enumerate(temp_point_history):
+        if index == 0 :
+            base_x, base_y = point[0], point[1]
+        
+        temp_point_history[index][0] = (temp_point_history[index][0] - base_x) / image_width
+        temp_point_history[index][1] = (temp_point_history[index][1] - base_y) / image_height
+
+    temp_point_history = list(itertools.chain.from_iterable(temp_point_history))
+
+    return temp_point_history
+
 
 DataCollection()
