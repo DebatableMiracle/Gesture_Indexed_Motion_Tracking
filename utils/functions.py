@@ -138,59 +138,59 @@ def draw_landmarks(image, landmark_point):
             cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
             cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
         if index == 3:
-                cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
         if index == 4:
-                cv.circle(image, (landmark[0], landmark[1]), 8, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 8, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 8, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 8, (178, 34, 34), 1)
         if index == 5:
-                cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
         if index == 6:
-                cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
         if index == 7:
-                cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
         if index == 8:
-                cv.circle(image, (landmark[0], landmark[1]), 8, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 8, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 8, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 8, (178, 34, 34), 1)
         if index == 9:
-                cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
         if index == 10:
-                cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
         if index == 11:
-                cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
         if index == 12:
-                cv.circle(image, (landmark[0], landmark[1]), 8, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 8, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 8, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 8, (178, 34, 34), 1)
         if index == 13:
-                cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
         if index == 14:
-                cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
         if index == 15:
-                cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
         if index == 16:
-                cv.circle(image, (landmark[0], landmark[1]), 8, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 8, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 8, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 8, (178, 34, 34), 1)
         if index == 17:
-                cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
         if index == 18:
-                cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
         if index == 19:
-                cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 5, (178, 34, 34), 1)
         if index == 20:
-                cv.circle(image, (landmark[0], landmark[1]), 8, (255, 218, 185), -1)
-                cv.circle(image, (landmark[0], landmark[1]), 8, (178, 34, 34), 1)
+            cv.circle(image, (landmark[0], landmark[1]), 8, (255, 218, 185), -1)
+            cv.circle(image, (landmark[0], landmark[1]), 8, (178, 34, 34), 1)
             
     return image
     
@@ -219,7 +219,11 @@ def draw_info_text(image, brect, handedness, hand_sign_text, finger_gesture_text
     
 def draw_info(image, fps, number, mode):
     cv.putText(image, "FPS:" + str(fps), (10,30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (0, 0, 0), 4, cv.LINE_AA)
-    cv.putText(image, "FPS:" + str(fps), (10,30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)          
+    cv.putText(image, "FPS:" + str(fps), (10,30), cv.FONT_HERSHEY_SIMPLEX, 1.0, (255, 255, 255), 2, cv.LINE_AA)
+    if mode==3:
+          cv.putText(image, "MODE: Gesture and Motion detection", (10, 90),
+                   cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1,
+                   cv.LINE_AA)              
     if mode==0:
           cv.putText(image, "MODE: Static Gestures Demo", (10, 90),
                    cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1,
@@ -232,7 +236,7 @@ def draw_info(image, fps, number, mode):
           cv.putText(image, "MODE: Gesture Motion Classification", (10, 90),
                    cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1,
                    cv.LINE_AA)
-    if mode > 0:
+    if 0 < mode < 3:
           if 0 <= number <= 9:
                 cv.putText(image, "number", (10, 110),
                    cv.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 1,
@@ -243,11 +247,11 @@ def draw_info(image, fps, number, mode):
 
 def select_mode(key, mode):
     number = -1
-    if 48 <= key <= 57:
+    if 48 <= key <= 57: # 0 to 9
         number = key - 48
-    if key == 110:
+    if key == 110: #n
         mode = 1
-    if key  == 107:
+    if key  == 107: #k
         mode = 2
     return number, mode
 
@@ -263,4 +267,30 @@ def write_in_csv(number, mode, landmark_list, point_history_list):
             writer = csv.writer(f)
             writer.writerow([number, *point_history_list])
         #later for motion sensing of the hand
-        return
+    else:
+        pass
+    return
+
+def pre_process_point_history(image, point_history):
+    image_width, image_height = image.shape[1], image.shape[0]
+
+    temp_point_history = copy.deepcopy(point_history)
+
+    base_x, base_y = 0,0
+    for index, point in enumerate(temp_point_history):
+        if index == 0 :
+            base_x, base_y = point[0], point[1]
+        
+        temp_point_history[index][0] = (temp_point_history[index][0] - base_x) / image_width
+        temp_point_history[index][1] = (temp_point_history[index][1] - base_y) / image_height
+
+    temp_point_history = list(itertools.chain.from_iterable(temp_point_history))
+
+    return temp_point_history
+
+
+def draw_point_history(image, point_history):
+    for index, point in enumerate(point_history):
+        if point[0] != 0 and point[1] != 0:
+            cv.circle(image,(point[0], point[1]), 1 + int(index/2), (152, 251, 152), 2) 
+    return image 

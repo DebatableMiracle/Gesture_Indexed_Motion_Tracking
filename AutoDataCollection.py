@@ -13,7 +13,7 @@ from models import PointHistoryClassifier
 
 from utils import CvFpsCalc
 from models import KeyPointClassifier
-from utils.functions import calc_bounding_rect, calc_landmark_list, draw_bounding_rect, draw_info, draw_info_text, draw_landmarks, pre_process_landmark, select_mode, write_in_csv
+from utils.functions import calc_bounding_rect, calc_landmark_list, draw_bounding_rect, draw_info, draw_info_text, draw_landmarks, pre_process_landmark, pre_process_point_history, select_mode, write_in_csv
 
 def get_args():
     parser = argparse.ArgumentParser()
@@ -155,22 +155,6 @@ def DataCollection():
         cv.imshow('Data Collection Assistance Application', debug_image)
     cap.release()
     cv.destroyAllWindows()
-def pre_process_point_history(image, point_history):
-    image_width, image_height = image.shape[1], image.shape[0]
-
-    temp_point_history = copy.deepcopy(point_history)
-
-    base_x, base_y = 0,0
-    for index, point in enumerate(temp_point_history):
-        if index == 0 :
-            base_x, base_y = point[0], point[1]
-        
-        temp_point_history[index][0] = (temp_point_history[index][0] - base_x) / image_width
-        temp_point_history[index][1] = (temp_point_history[index][1] - base_y) / image_height
-
-    temp_point_history = list(itertools.chain.from_iterable(temp_point_history))
-
-    return temp_point_history
 
 
 DataCollection()
